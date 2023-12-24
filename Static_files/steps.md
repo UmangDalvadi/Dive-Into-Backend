@@ -15,3 +15,7 @@ Static files means create image, js or stylesheet file outside .ejs and link it 
 
         
 it's a syntax for implimenting name as a variable eg. <%= variable_name %> in .ejs file
+
+
+Here public folder is for frontend codes and ejs(in views) is for implementing code like html 
+and we can render it from server by outer script.js
