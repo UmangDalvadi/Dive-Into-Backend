@@ -13,8 +13,10 @@ const { render } = require("ejs");
 // > use 'res.render' insted of 'res.send'
 // > give fileName which is in the views dir to render, eg. res.render(fileName, dataValues); 
 
-app.set('views', './ejs/views')
+app.set('views', './Static_files/views')
 app.set("view engine", "ejs");
+
+app.use(express.static('./Static_files/public'))
 
 app.use(bodyParser.json());
 
