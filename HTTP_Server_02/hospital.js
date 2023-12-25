@@ -10,7 +10,7 @@ const user = [{
     kidney: [{
         healthy: false
     }, {
-        healthy: false
+        healthy: true
     }]
 }]
 
@@ -54,11 +54,17 @@ app.put("/", (req, res) => {
 
 app.delete("/", (req, res) => {
 
-    for (let i = 0; i < user[0].kidney.length; i++) {
-        if (!user[0].kidney[i].healthy) {
-            user[0].kidney.splice(user[0].kidney[i], 1);
-        }
-    }
+    // for (let i = 0; i < user[0].kidney.length; i++) {
+    //     if (!user[0].kidney[i].healthy) {
+    //         user[0].kidney.splice(user[0].kidney[i], 1);
+    //     }
+    // }
+
+    const healthyKidney = user[0].kidney.filter((x) => {
+        return x.healthy
+    })
+
+    user[0].kidney = healthyKidney;
 
     res.send({});
 
