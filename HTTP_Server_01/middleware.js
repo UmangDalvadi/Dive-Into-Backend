@@ -18,7 +18,7 @@ app.use((req, res, next)=>{
 
 // rought 1
 app.get("/", (req, res)=>{
-    res.send("hello world");
+    res.send("Success");
 });
 
 // rought 2 - Dynamic rought

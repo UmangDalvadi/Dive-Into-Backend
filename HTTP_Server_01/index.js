@@ -7,7 +7,7 @@ app.use(bodyParser.json());
 
 app.post('/',(req,res)=>{
     console.log(req.body);
-    res.send("Hello world2" );
+    res.send("Success" );
 })
 
 app.listen(port,()=>{
