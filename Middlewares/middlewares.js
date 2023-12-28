@@ -1,5 +1,5 @@
-//checks Auth
-//and insure input is valid or not (ZOD library used for this functionality)
+//1) checks Auth
+//2) and insure input is valid or not (ZOD library used for this functionality)
 //if input is invalid then we have to catch it at the end of the server by throughwing error and catch it by globle catches(error handling), for this at the last > app.use(()=>{err, req, res, next}){ }
 
 //defining middleware functionality
