@@ -7,6 +7,8 @@
 const express = require("express")
 const app = express()
 
+
+//wrong way to input validation --> Here zod came to the picture, for this we have to give a structure of our validation to zod and it's internally check all inputes
 function userMiddleware(req, res, next) {
     if (req.headers.username != 'umang' || req.headers.password != 'pass') {
         res.status(404).json({
