@@ -64,27 +64,25 @@ app.post('/signin', async (req, res) => {
 
 })
 
-app.get('/users', (req, res) => {
+app.get('/users', async (req, res) => {
     const token = req.headers.authorization;
     try {
         const decoded = jwt.verify(token, jwtPassword);
-        const username = decoded.username;
+        // const username = decoded.username;
+        if (!decoded) {
+            return res.status(404).json({
+                msg: 'Invalid token'
+            });
+        }
 
-        User.find({}, (err, data) => {
-            if (err) {
-                return res.status(500).json({
-                    msg: 'Failed to retrie data...'
-                })
-            }
-            res.status(200).json(data);
-        })
+        const data = await User.find({});
+        res.status(200).json(data);
+
     } catch (err) {
         res.status(404).json({
             msg: 'Invalid token'
-        })
+        });
     }
-
-
-})
+});
 
 app.listen(process.env.PORT || 3000);
