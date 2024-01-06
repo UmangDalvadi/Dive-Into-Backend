@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" placeholder="enter profit" id="profit">
+    <br>
+    <input type="text" placeholder="enter rate" id="rate">
+    <br>
+    <input type="text" placeholder="enter year" oninput="deBouncing()" id="year">
+    <br>
+
+    <div id="ans"></div>
+
+</body>
+<script>
+
+    let timeout;
+    function deBouncing() {
+
+        clearTimeout(timeout);
+        timeout = setTimeout(() => {
+            calcInterest();
+        }, 100)
+    }
+
+    async function calcInterest() {
+        const profit = document.getElementById('profit').value;
+        const rate = document.getElementById('rate').value;
+        const year = document.getElementById('year').value;
+
+        const response = await fetch(`http://localhost:3000/interest?profit=${profit}&rate=${rate}&year=${year}`);
+        const ans = await response.json();
+
+        document.getElementById('ans').innerHTML = `Interest: ${ans.interest}, Total:${ans.total}`;
+    }
+
+</script>
+
+</html>
