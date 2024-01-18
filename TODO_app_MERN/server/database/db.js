@@ -15,7 +15,7 @@ const userSchema = new mongoose.Schema({
 const todoSchema = new mongoose.Schema({
     title: String,
     description: String,
-    // isDone: Boolean
+    isDone: Boolean
 })
 
 const user = mongoose.model('User', userSchema);

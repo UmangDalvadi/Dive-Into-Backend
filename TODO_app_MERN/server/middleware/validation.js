@@ -29,11 +29,32 @@ function userValidation(req, res, next) {
     }
 
 }
-function inputTodoValidation() {
+
+function inputTodoValidation(req, res, next) {
+
+    const payload = req.body;
+    const isInputTodoValidate = inputTodoSchema.safeParse(payload);
+    if (isInputTodoValidate.success) {
+        next();
+    } else {
+        return res.status(401).json({
+            message: 'Invalid input type!'
+        });
+    }
 
 }
-function updateTodoValidation() {
 
+function updateTodoValidation(req, res, next) {
+
+    const payload = req.body;
+    const isUpdateTodoValidate = updateTodoSchema.safeParse(payload);
+    if (isUpdateTodoValidate) {
+        next();
+    } else {
+        return res.status(401).json({
+            message: " Invalid id or input type!"
+        })
+    }
 }
 
 module.exports = {
